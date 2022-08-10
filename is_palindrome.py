@@ -1,8 +1,13 @@
-string = 'racecar'
+import re
+
+string = 'race, car'
 
 def is_palindrome(string):
     # create two pointers for the left and right
+    string = string.lower()
+    string = re.sub('[^0-9a-zA-Z]+', '', string)
     left = 0
+    print(string)
     right = len(string) - 1
     # interate till left reaches the middle of the array
     while left < len(string) / 2:
