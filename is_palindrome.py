@@ -1,22 +1,29 @@
-import re
 
-string = 'race, car'
+s = 'race, car'
 
-def is_palindrome(string):
-    # create two pointers for the left and right
-    string = string.lower()
-    string = re.sub('[^0-9a-zA-Z]+', '', string)
-    left = 0
-    print(string)
-    right = len(string) - 1
-    # interate till left reaches the middle of the array
-    while left < len(string) / 2:
-        # if char on left doesnt equal char on right it is not a palindrome
-        if string[left] != string[right]:
-            return False
-        # move left and right
-        left += 1
-        right -= 1
-    return True
 
-print(is_palindrome(string))
+
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l, r = 0, len(s) - 1
+        while l < r:
+            while l < r and not self.alphanum(s[l]):
+                l += 1
+            while l < r and not self.alphanum(s[r]):
+                r -= 1
+            if s[l].lower() != s[r].lower():
+                return False
+            l += 1
+            r -= 1
+        return True
+
+    # Could write own alpha-numeric function
+    def alphanum(self, c):
+        return (
+            ord("A") <= ord(c) <= ord("Z")
+            or ord("a") <= ord(c) <= ord("z")
+            or ord("0") <= ord(c) <= ord("9")
+        )
+
+    print(isPalindrome(s, str))
