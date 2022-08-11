@@ -10,5 +10,6 @@ def getIntersection(array1, array2):
             intersection.append(element)
 
     return intersection
-    
+
 print(getIntersection(array1, array2))
+
